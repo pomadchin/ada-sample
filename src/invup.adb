@@ -47,7 +47,7 @@
          end if;
       end Compare;
    
-      procedure Test_Inv is -- Перемножение исходной на обращенную матрицу и сравнение с единичной
+      procedure Test_Inv is -- multiply matrix and compare with E
       begin
          new_line;
          put("========= Testing; ========");
