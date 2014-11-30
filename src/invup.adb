@@ -65,7 +65,7 @@
             for j in 1..r loop
                if(i = j) and compare(c(i,j),1.0) then -- a diagonal
                   put("Error("); put(i); put(","); put(j); put(") -");
-						put(float(c(i,j)),5,3); new_line; 
+                  put(float(c(i,j)),5,3); new_line; 
                end if;
                if(i /= j) and compare(c(i,j),0.0) then -- the rest
                   put("Error("); put(i); put(","); put(j); put(") -");
@@ -95,7 +95,7 @@
          
             accept set(ll:in integer) do -- get (set) line
                l := ll;  
-             end set;
+            end set;
             loop
                select
                   accept start;
