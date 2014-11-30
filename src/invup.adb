@@ -1,7 +1,6 @@
    with ada_io; use ada_io;
    with Random_Generic;
    with Ada.Numerics.Elementary_Functions;
-   with Ada.Text_IO, Ada.Long_Long_Float_Text_IO, Ada.Integer_Text_IO;
 
    procedure invup is
    
