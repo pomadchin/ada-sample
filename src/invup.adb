@@ -11,7 +11,7 @@
       package Rand is
       new Random_Generic(Result_Subtype => RR); -- numbers from 1 to RR
    
-      r: constant integer := 3; -- matrix dimension 20x20
+      r: constant integer := 20; -- matrix dimension 20x20
       p: integer := r; -- num
       a: matrix(1..r,1..r); -- init matrix
       b: matrix(1..r,1..r); -- A^-1
