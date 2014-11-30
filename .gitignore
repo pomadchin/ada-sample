@@ -3,3 +3,9 @@
 
 # Ada Library Information
 *.ali
+
+# Executable files
+*.exe
+
+# Tmp files
+*~*
