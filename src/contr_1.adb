@@ -2,11 +2,14 @@
    procedure Contr_1 is
       z: float; -- function zero
       n : integer := 0; -- step number
+      
       function f(x: in float) return float is
       begin
          return (x - 5.0)*(x + 4.0)*(x - 1.0) + 0.7;
-      end f;
-   pragma INLINE(f);
+      end;
+      
+       -- pragma INLINE(f);
+  		 
       procedure Iter(x1, x2, x3 : in float; res : out float; e : in float) is
          task type p is
             entry set(i: in integer);
@@ -20,6 +23,7 @@
          eps: float := e;
          d : float := 100.0; -- find min of points |old - new|
          k : integer; -- accumulator for one of three points (necessary)
+         
          task body p is
             j,jj:integer;
          begin
@@ -80,6 +84,7 @@
          end loop;
          res := (s(k) + x(k))/2.0; -- ~ most equal
       end Iter;
+      
    begin
       Iter(-7.7, -6.8, -6.2, z, 1.0e-4);
       put(z, 3, 5); new_line;

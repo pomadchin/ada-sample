@@ -1,6 +1,7 @@
    with ada_io; use ada_io;
    with Random_Generic;
    with Ada.Numerics.Elementary_Functions;
+	
    procedure invup is
       type matrix is array(integer range <>,integer range <>) of Long_Long_Float;
       subtype RR is Positive range 1..10; -- for generator of random numbers
@@ -12,7 +13,7 @@
       b: matrix(1..r,1..r);
       c: matrix(1..r,1..r);
       
-      procedure Fill_Matrix is -- to fill matrix
+      procedure fillMatrix is -- to fill matrix
       begin
          for i in 1..r loop
             for j in 1..r loop
@@ -20,7 +21,7 @@
                if i>j then a(i,j) := 0.0; end if; -- bottom
             end loop;
          end loop;
-      end Fill_Matrix;
+      end fillMatrix;
       
       procedure printMatrix(a_in:in matrix) is
       begin
@@ -32,14 +33,14 @@
          end loop;
       end printMatrix;
       
-      function Compare(a,b: in Long_Long_Float) return boolean is -- to compare result
+      function compare(a,b: in Long_Long_Float) return boolean is -- to compare result
       begin
          if abs(a-b)> 0.01 then
             return true; -- error
          else
             return false;
          end if;
-      end Compare;
+      end compare;
       
       procedure Test_Inv is -- to multiply and compare with unit matrix
       begin
@@ -57,10 +58,10 @@
          printMatrix(c); new_line;
          for i in 1..r loop
             for j in 1..r loop
-               if(i = j) and Compare(c(i,j),1.0) then -- a diagonal
+               if(i = j) and compare(c(i,j),1.0) then -- a diagonal
                   put("Error("); put(i); put(","); put(j); put(") -");
                   put(float(c(i,j)),5,3); new_line; end if;
-               if(i /= j) and Compare(c(i,j),0.0) then -- the rest
+               if(i /= j) and compare(c(i,j),0.0) then -- the rest
                   put("Error("); put(i); put(","); put(j); put(") -");
                   put(float(c(i,j)),5,3); new_line; end if;
             end loop;
@@ -75,6 +76,7 @@
             entry set(ll,uu:in integer);
          end par;
          unit: array(1..p) of par;
+         
          task body par is
             l,u:integer;
             s:Long_Long_Float;
@@ -91,6 +93,7 @@
                end loop;
             end loop;
          end par;
+      	
       begin
          b :=(others =>(others => 0.0)); -- nulling matrix b
          h := r/p;
@@ -102,8 +105,9 @@
          end loop;
          return(b);
       end inv;
+   	
    begin
-      Fill_Matrix;
+      fillMatrix;
       printMatrix(a); new_line;
       b := inv(a,p);
       put("+++"); new_line;
