@@ -8,8 +8,8 @@
          return (x - 5.0)*(x + 4.0)*(x - 1.0) + 0.7;
       end;
       
-       -- pragma INLINE(f);
-  		 
+       pragma INLINE(f);
+   	 
       procedure Iter(x1, x2, x3 : in float; res : out float; e : in float) is
          task type p is
             entry set(i: in integer);
